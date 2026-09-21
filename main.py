@@ -1,3 +1,6 @@
+from sucursales import sucursales
+
+
 print("Bienvenidos a el programa")
 
 while True:
@@ -8,11 +11,11 @@ while True:
     print("4. Salir")
     try:
         
-        n_sucursal = int(input("Ingresa el número correspondiente"))
+        n_sucursal = int(input("Ingresa el número correspondiente "))
 
         if n_sucursal == 1:
-             print("registro")
-            #funcion registrar sucursal
+            print("registro")
+            sucursales.registrar_sucursal()
         elif n_sucursal == 2:
             #funcion editar  sucursal
             print("editar")
