@@ -43,7 +43,7 @@ def editar_sucursal():
     print("\nQue acción deseas realizar?")
     print("1. Editar datos")
     print("2. Eliminar sucursal")
-    print("3. Cancelar")
+    print("3. Volver")
 
     opcion = input("Seleccione una opción (1-3): ").strip()
 
@@ -65,7 +65,35 @@ def editar_sucursal():
             print("Sucursal editada y guardada exitosamente!!")
         except Exception as e:
             print(f"Error al guardar los datos: {e}")
-            
+
+    elif opcion == "2":
+        
+        confirmacion = input(f"Estas seguro de eliminar la sucursal '{sucursal_encontrada.get('nombre')}'? (s/n): ").strip().lower()
+
+        if confirmacion == 's':
+            sucursales.pop(indice_encontrado)
+
+            try:
+                with open(ARCHIVOS_SUCURSALES, "w", encoding="utf-8") as archivo:
+                    json.dump(sucursales, archivo, indent=4, ensure_ascii=False)
+                print("Sucursal eliminada con éxito.")
+            except Exception as e:
+                print(f"Error al actualizar el archivo: {e}")
+
+        else:
+            print("Operación de eliminación cancelada.")
+
+    elif opcion == "3":
+        print("\nVolvinedo al menu principal...")
+        return
+
+    else:
+        print("Opción inválida (1-3)")
+        return
+
+
+    
+
 
 
 
