@@ -1,13 +1,13 @@
 import json
-import os
-import sucursales
+from sucursales import sucursales
+
 
 ARCHIVOS_SUCURSALES= "data/data.json"
 
 def editar_sucursal():
     try:
         with open(ARCHIVOS_SUCURSALES, "r", encoding="utf-8") as archivo:
-                  sucursales = json.load(archivo)
+                sucursales = json.load(archivo)
     except FileNotFoundError:
         print("No se encontro archivo de sucursales.")
         sucursales = []
@@ -47,6 +47,26 @@ def editar_sucursal():
 
     opcion = input("Seleccione una opción (1-3): ").strip()
 
-    
+    if opcion == "1":
+        print("\n--- MODO EDICIÓN ---")
+        print("(Deje el campo en blanco si no desae modificar)")
+
+        nuevo_nombre = input(f"Nuevo Nombre [{sucursal_encontrada.get('nombre')}]: ").strip()
+        nueva_direccion = input(f"Nueva dirección [{sucursal_encontrada.get('direccion')}]: ").strip()
+
+        if nuevo_nombre:
+            sucursales[indice_encontrado]["nombre"] = nuevo_nombre
+        if nueva_direccion:
+            sucursales[indice_encontrado]["direccion"] = nueva_direccion
+
+        try:
+            with open(ARCHIVOS_SUCURSALES, "w", encoding="utf-8") as archivo:
+                json.dump(sucursales, archivo, indent=4, ensure_ascii=False)
+            print("Sucursal editada y guardada exitosamente!!")
+        except Exception as e:
+            print(f"Error al guardar los datos: {e}")
+            
+
+
 
 
