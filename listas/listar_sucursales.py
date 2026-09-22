@@ -13,3 +13,5 @@ def listar_sucursales():
         print("Teléfono:", sucursal["telefono"])
         print("Gerente:", sucursal["gerente"])
         print("Estado:", sucursal["estado"])
+
+print("---------resultado---------")
