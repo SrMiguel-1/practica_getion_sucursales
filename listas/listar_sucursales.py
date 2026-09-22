@@ -5,6 +5,7 @@ def listar_sucursales():
         sucursales = json.load(archivo)
 
     print("------ LISTA DE SUCURSALES -------------")
+    
 
     for sucursal in sucursales:
         print("--------------------------")
